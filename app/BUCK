@@ -41,5 +41,7 @@ apple_binary(
 
 apple_resource(
   name = 'AppResource',
-  dirs = ['Resource'],
+  files = glob([
+    'Resource/*.storyboard'
+  ]),
 )
