@@ -1,0 +1,40 @@
+# ------------------------------------------------------
+# All the cells (read "repository") in the Buck project
+# ------------------------------------------------------
+
+[repositories]
+  buck = .
+  app = ./app
+  common = ./common  
+
+# ------------------------------------------------------
+# Configurations for Apple toolchain
+# ------------------------------------------------------
+
+[apple]
+  xcode_developer_dir = /Applications/Xcode.app/Contents/Developer
+  iphonesimulator_target_sdk_version = 13.0
+  iphoneos_target_sdk_version = 13.0
+
+# ------------------------------------------------------
+# Configurations for C/C++ toolchain
+# ------------------------------------------------------
+
+[cxx]
+  default_platform = iphonesimulator-x86_64
+  cflags = -g -std=c11
+  cxxflags = -g -std=c++14
+
+# ------------------------------------------------------
+# Swift settings
+# ------------------------------------------------------
+
+[swift]
+  version = 5
+
+# ------------------------------------------------------
+# Project generation settings
+# ------------------------------------------------------
+
+[project]
+  ide = xcode

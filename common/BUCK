@@ -1,0 +1,11 @@
+apple_library(
+  name = 'Common',
+  visibility = ['PUBLIC'],
+  srcs = glob([
+    'Source/*.swift'
+  ]),
+  frameworks = [
+    '$SDKROOT/System/Library/Frameworks/Foundation.framework',
+    '$SDKROOT/System/Library/Frameworks/UIKit.framework',
+  ]
+)

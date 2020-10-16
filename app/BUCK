@@ -1,0 +1,45 @@
+# This is a build file containing various build rules.
+
+# Rules are like functions, they take inputs and produce an output.
+# They have a name (known as a "build target") which can be used
+# to compose other rules.
+
+# This rule compresses the specified bundle into an IPA (iOS Appstore Package).
+
+apple_package(
+  name = 'AppPackage',
+  bundle = ':BuckDemoApp'
+)
+
+# This rule bundles together the specified binary with all necessary
+# files and resources. 
+
+apple_bundle(
+  name = 'BuckDemoApp',
+  binary = ':AppBinary',
+  extension = 'app',
+  info_plist = 'Supporting Files/Info.plist'
+)
+
+# This rules builds a native exectuable binary from the specified source
+# files and dependencies.
+
+apple_binary(
+  name = 'AppBinary',
+  srcs = glob([
+    'Source/*.swift'
+  ]),
+  deps = [':AppResource', '//common:Common'],
+  frameworks = [
+    '$SDKROOT/System/Library/Frameworks/Foundation.framework',
+    '$SDKROOT/System/Library/Frameworks/UIKit.framework',
+  ]
+)
+
+# This rule defines a set of resources that can be bundled in an
+# application binary.
+
+apple_resource(
+  name = 'AppResource',
+  dirs = ['Resource'],
+)
